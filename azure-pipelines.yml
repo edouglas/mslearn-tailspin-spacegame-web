@@ -23,11 +23,13 @@ steps:
     KeyVaultName: 'TestKeyVault-Alterra'
     SecretsFilter: '*'
 
-- bash: |
-    echo my pipeline variable is "$(test-variable)"
-
-- bash: |
-    echo $(test-123) > secret.txt
-
-- bash: |
-    echo my key vault variable is "$(test-variable)"
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo my pipeline variable is "$(test-variable)"
+      
+      echo $(test-123) > secret.txt
+      
+      echo "##vso[task.setvariable variable=test-variable]crushed tomatoes"
+      
+      echo my key vault variable is "$(test-variable)"
