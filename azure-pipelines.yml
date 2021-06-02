@@ -27,4 +27,7 @@ steps:
     echo my pipeline variable is "$(test-variable)"
 
 - bash: |
-    echo my key vault variable is "$(test-123)"
+    echo "##vso[task.setvariable variable=test-variable]$(test-123)"
+
+- bash: |
+    echo my key vault variable is "$(test-variable)"
