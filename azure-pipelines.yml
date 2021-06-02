@@ -17,3 +17,13 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise – MPN(d31ac6d8-ac40-408d-9925-eae1a20c99b7)'
+    KeyVaultName: 'TestKeyVault-Alterra'
+    SecretsFilter: '*'
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'echo "##vso[task.setvariable variable=TEST_VARIABLE]$(test-variable)"'
