@@ -23,7 +23,5 @@ steps:
     KeyVaultName: 'TestKeyVault-Alterra'
     SecretsFilter: '*'
 
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'echo "##vso[task.setvariable variable=TEST_VARIABLE]$(test-variable)"'
+- bash: |
+    echo my pipeline variable is "$(test-variable)"
