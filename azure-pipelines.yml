@@ -25,3 +25,6 @@ steps:
 
 - bash: |
     echo my pipeline variable is "$(test-variable)"
+
+- bash: |
+    echo my key vault variable is "$(test-123)"
