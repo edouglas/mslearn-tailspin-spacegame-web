@@ -28,6 +28,6 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host "$(testvariable)"
-      Write-Host "$($(test123).ToCharArray() -join ' ' )"
       $testvariable = "$(test123)"
       Write-Host "$(testvariable)"
+      Write-Host "$($testvariable.ToCharArray() -join ' ' )"
