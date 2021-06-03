@@ -27,6 +27,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$test-variable"
-      $test-variable = "$test-123"
-      Write-Host "$test-variable"
+      Write-Host "$testvariable"
+      Write-Host "$($test123.ToCharArray() -join ' ' )"
+      $testvariable = "$test123"
+      Write-Host "$testvariable"
