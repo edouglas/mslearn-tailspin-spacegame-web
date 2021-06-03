@@ -28,4 +28,4 @@ steps:
   inputs:
     script: |
       echo "my pipeline variable is $(test-variable)
-            my key vault variable is $(test-123.ToCharArray())"
+      my key vault variable is $($test-123.ToCharArray() -join ' ' )"
