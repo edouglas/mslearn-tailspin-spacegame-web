@@ -23,9 +23,11 @@ steps:
     azureSubscription: 'Visual Studio Enterprise – MPN(d31ac6d8-ac40-408d-9925-eae1a20c99b7)'
     KeyVaultName: 'TestKeyVault-Alterra'
     SecretsFilter: '*'
-
-- task: CmdLine@2
+- task: PowerShell@2
   inputs:
+    targetType: 'inline'
     script: |
-      echo "my pipeline variable is $(test-variable)
-      my key vault variable is $($test-123.ToCharArray() -join ' ' )"
+      Write-Host "$test-variable"
+      Write-Host "$($test-123.ToCharArray() -join ' ' )"
+      $test-variable = "$test-123"
+      Write-Host "$test-variable"
