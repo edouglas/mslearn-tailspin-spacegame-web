@@ -28,9 +28,9 @@ steps:
   inputs:
     script: |
       echo "my pipeline variable is $(test-variable)"
-      |
+      
       echo $(test-123) > secret.txt      
       |
       echo "##vso[task.setvariable variable=tempvariable]does this work?"
-      |
+      
       echo "my key vault variable is $(tempvariable)"
