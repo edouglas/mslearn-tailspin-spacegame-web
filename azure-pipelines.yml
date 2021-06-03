@@ -31,6 +31,6 @@ steps:
       
       echo $(test-123) > secret.txt
       
-      echo "##vso[task.setvariable variable=temp-variable]$(test-123)"
+      echo "##vso[task.setvariable variable=tempvariable] $(test-123)"
       
-      echo "my key vault variable is $(temp-variable)"
+      echo "my key vault variable is $(tempvariable)"
