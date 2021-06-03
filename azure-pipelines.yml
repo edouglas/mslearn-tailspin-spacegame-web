@@ -27,7 +27,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo "my pipeline variable is $(test-variable)"
-      echo $(test-123) > secret.txt      
-      echo "##vso[task.setvariable variable=tempvariable]does this work?"
-      echo "my key vault variable is $(tempvariable)"
+      echo "my pipeline variable is $(test-variable)
+            $(test-123) > secret.txt      
+            ##vso[task.setvariable variable=tempvariable]does this work?
+            my key vault variable is $(tempvariable)"
