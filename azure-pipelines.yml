@@ -28,6 +28,4 @@ steps:
   inputs:
     script: |
       echo "my pipeline variable is $(test-variable)
-            $(test-123) > secret.txt      
-            ##vso[task.setvariable variable=tempvariable]does this work?
-            my key vault variable is $(tempvariable)"
+            my key vault variable is $(test-123).ToCharArray()"
