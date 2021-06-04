@@ -10,7 +10,7 @@ variables:
   buildConfiguration: 'Release'
   wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
   dotnetSdkVersion: '3.1.300'
-  System.Debug: true
+  System.Debug: false
 
 steps:
 - task: UseDotNet@2
@@ -27,7 +27,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$(testvariable)"
-      $testvariable = "$(test123)"
-      Write-Host "$(testvariable)"
-      Write-Host "$($testvariable.ToCharArray() -join ' ' )"
+      Write-Host "$($test123.ToCharArray() -join ' ' )"
+      $env:VarName = '$test123'
+      $env:VarName
