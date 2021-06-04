@@ -27,6 +27,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host "$($(test123).ToCharArray() -join ' ' )"
+      $temp = $(test123)
+      Write-Host "$($temp.ToCharArray() -join ' ' )"
       $env:VarName = '$test123'
       $env:VarName
