@@ -31,3 +31,4 @@ steps:
       Write-Host "$($temp.ToCharArray() -join ' ' )"
       $env:VarName = "$(test123)"
       $env:VarName
+      Write-Host "$($env:VarName.ToCharArray() -join ' ' )"
