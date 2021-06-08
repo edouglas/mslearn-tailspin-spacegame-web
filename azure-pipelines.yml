@@ -17,18 +17,22 @@ steps:
   displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
   inputs:
     version: '$(dotnetSdkVersion)'
-
-- task: AzureKeyVault@1
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)/Templates'
   inputs:
-    azureSubscription: 'Visual Studio Enterprise – MPN(d31ac6d8-ac40-408d-9925-eae1a20c99b7)'
-    KeyVaultName: 'TestKeyVault-Alterra'
-    SecretsFilter: '*'
-- task: PowerShell@2
+    SourceFolder: deployment
+    Contents: '*.json'
+    TargetFolder: '$(build.artifactstagingdirectory)/Templates'
+- task: Npm@1
+  displayName: 'npm custom'
   inputs:
-    targetType: 'inline'
-    script: |
-      $temp = "$(test123)"
-      Write-Host "$($temp.ToCharArray() -join ' ' )"
-      $env:VarName = "$(test123)"
-      $env:VarName
-      Write-Host "$($env:VarName.ToCharArray() -join ' ' )"
+    command: custom
+    verbose: false
+    customCommand: 'install --production'
+- task: ArchiveFiles@2
+  displayName: 'Archive $(Build.SourcesDirectory)'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
