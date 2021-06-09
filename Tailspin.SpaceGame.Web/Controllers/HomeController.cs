@@ -5,6 +5,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Tailspin.SpaceGame.Web.Models;
 using TailSpin.SpaceGame.Web.Models;
 
 namespace TailSpin.SpaceGame.Web.Controllers
@@ -15,14 +17,17 @@ namespace TailSpin.SpaceGame.Web.Controllers
         private readonly IDocumentDBRepository<Score> _scoreRepository;
         // User profile repository.
         private readonly IDocumentDBRepository<Profile> _profileRespository;
+        private ConfigOptions _config;
 
         public HomeController(
             IDocumentDBRepository<Score> scoreRepository,
-            IDocumentDBRepository<Profile> profileRespository
+            IDocumentDBRepository<Profile> profileRespository,
+            IOptions<ConfigOptions> config
             )
         {
             _scoreRepository = scoreRepository;
             _profileRespository = profileRespository;
+            _config = config.Value;
         }
 
         public async Task<IActionResult> Index(
@@ -32,9 +37,23 @@ namespace TailSpin.SpaceGame.Web.Controllers
             string region = ""
             )
         {
+            string value;
+
+            // Check whether the environment variable exists.
+            value = Environment.GetEnvironmentVariable("ConfigOptions__EnvVar", EnvironmentVariableTarget.Machine);
+            // If necessary, create it.
+            if (value == null)
+            {
+                Environment.SetEnvironmentVariable("ConfigOptions__EnvVar", "Value1");
+                // Now retrieve it.
+                value = Environment.GetEnvironmentVariable("ConfigOptions__EnvVar");
+            }
+            _config.EnvVar = value;
+
             // Create the view model with initial values we already know.
             var vm = new LeaderboardViewModel
             {
+                Config = _config,
                 Page = page,
                 PageSize = pageSize,
                 SelectedMode = mode,

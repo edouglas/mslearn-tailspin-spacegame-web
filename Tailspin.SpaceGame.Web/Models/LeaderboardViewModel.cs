@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Tailspin.SpaceGame.Web.Models;
 
 namespace TailSpin.SpaceGame.Web.Models
 {
     public class LeaderboardViewModel
     {
+        public ConfigOptions Config { get; set; }
         // The game mode selected in the view.
         public string SelectedMode { get; set; }
         // The game region (map) selected in the view.
