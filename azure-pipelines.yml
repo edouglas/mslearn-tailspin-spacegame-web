@@ -81,6 +81,19 @@ stages:
           steps:
           - download: current
             artifact: drop
+          - task: AzureKeyVault@2
+            displayName: Access the Key Vault
+            inputs:
+              azureSubscription: 'Visual Studio Enterprise – MPN (d31ac6d8-ac40-408d-9925-eae1a20c99b7)'
+              KeyVaultName: 'TestKeyVault-Alterra'
+              SecretsFilter: '*'
+              RunAsPreJob: true
+
+          - task: DotNetCoreCLI@2
+            displayName: 'Set Env Vars'
+            env:
+              ConfigOptions__EnvVar: $(ConfigOptions-EnvVar)
+
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
