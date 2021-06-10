@@ -33,9 +33,12 @@ namespace TailSpin.SpaceGame.Web
                             X509FindType.FindByThumbprint,
                             builtConfig["AzureADCertThumbprint"], false);
 
-                        config.AddAzureKeyVault(new Uri($"https://{builtConfig["KeyVaultName"]}.vault.azure.net/"),
-                            new ClientCertificateCredential(builtConfig["AzureADDirectoryId"], builtConfig["AzureADApplicationId"], certs.OfType<X509Certificate2>().Single()),
-                            new KeyVaultSecretManager());
+                        if (certs.Count > 0)
+                        {
+                            config.AddAzureKeyVault(new Uri($"https://{builtConfig["KeyVaultName"]}.vault.azure.net/"),
+                                new ClientCertificateCredential(builtConfig["AzureADDirectoryId"], builtConfig["AzureADApplicationId"], certs.OfType<X509Certificate2>().Single()),
+                                new KeyVaultSecretManager());
+                        }
 
                         store.Close();
                     }
