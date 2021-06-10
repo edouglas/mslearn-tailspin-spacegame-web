@@ -37,7 +37,7 @@ namespace TailSpin.SpaceGame.Web.Controllers
             string region = ""
             )
         {
-            string value;
+            /*string value;
 
             // Check whether the environment variable exists.
             value = Environment.GetEnvironmentVariable("ConfigOptions__EnvVar", EnvironmentVariableTarget.Machine);
@@ -48,7 +48,7 @@ namespace TailSpin.SpaceGame.Web.Controllers
                 // Now retrieve it.
                 value = Environment.GetEnvironmentVariable("ConfigOptions__EnvVar");
             }
-            _config.EnvVar = value;
+            _config.EnvVar = value;*/
 
             // Create the view model with initial values we already know.
             var vm = new LeaderboardViewModel
