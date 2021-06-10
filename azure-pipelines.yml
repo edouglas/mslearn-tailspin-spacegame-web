@@ -17,7 +17,7 @@ stages:
 
     variables:
       wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-      dotnetSdkVersion: '2.1.x'
+      dotnetSdkVersion: '3.1.x'
 
     steps:
     - task: AzureKeyVault@2
