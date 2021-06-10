@@ -44,7 +44,7 @@ namespace TailSpin.SpaceGame.Web.Controllers
             // If necessary, create it.
             if (value == null)
             {
-                Environment.SetEnvironmentVariable("ConfigOptions__EnvVar", "Value1");
+                Environment.SetEnvironmentVariable("ConfigOptions__EnvVar", "No env var with that name");
                 // Now retrieve it.
                 value = Environment.GetEnvironmentVariable("ConfigOptions__EnvVar");
             }

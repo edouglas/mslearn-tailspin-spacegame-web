@@ -33,9 +33,7 @@ namespace TailSpin.SpaceGame.Web
 
             services.AddMvc(m => { m.EnableEndpointRouting = false;})
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
             
-
             // Add document stores. These are passed to the HomeController constructor.
             services.AddSingleton<IDocumentDBRepository<Score>>(new LocalDocumentDBRepository<Score>(@"SampleData/scores.json"));
             services.AddSingleton<IDocumentDBRepository<Profile>>(new LocalDocumentDBRepository<Profile>(@"SampleData/profiles.json"));

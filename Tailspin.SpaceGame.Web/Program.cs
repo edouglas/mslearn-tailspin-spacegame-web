@@ -50,6 +50,8 @@ namespace TailSpin.SpaceGame.Web
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((context, config) =>
                 {
+                    config.AddEnvironmentVariables();
+
                     if (context.HostingEnvironment.IsProduction())
                     {
                         var builtConfig = config.Build();
