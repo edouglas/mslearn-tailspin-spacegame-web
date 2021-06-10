@@ -9,5 +9,6 @@ namespace Tailspin.SpaceGame.Web.Models
     {
         public string ConfigVar { get; set; }
         public string EnvVar { get; set; }
+        public string SecretVar { get; set; }
     }
 }
